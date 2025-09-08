@@ -1,0 +1,36 @@
+{
+  "application": {
+    "name": "ZeroLag",
+    "version": "0.1.0",
+    "author": "ZeroLag Team"
+  },
+  "performance": {
+    "max_cpu_usage": 1.0,
+    "max_memory_usage": 50,
+    "max_latency_overhead": 5
+  },
+  "mouse": {
+    "default_dpi": 800,
+    "min_dpi": 400,
+    "max_dpi": 26000,
+    "dpi_increment": 50,
+    "default_polling_rate": 1000,
+    "max_polling_rate": 8000
+  },
+  "keyboard": {
+    "default_polling_rate": 1000,
+    "max_polling_rate": 8000,
+    "default_repeat_delay": 250,
+    "default_repeat_rate": 30
+  },
+  "gui": {
+    "theme": "dark",
+    "window_width": 800,
+    "window_height": 600,
+    "minimize_to_tray": true
+  },
+  "safety": {
+    "emergency_hotkey": "Ctrl+Alt+Z",
+    "auto_disable_on_conflict": true
+  }
+}

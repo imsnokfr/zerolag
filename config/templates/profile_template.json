@@ -1,0 +1,37 @@
+{
+  "profile": {
+    "name": "Default Profile",
+    "description": "Default ZeroLag profile with balanced settings",
+    "version": "1.0",
+    "created": "2024-12-19T00:00:00Z",
+    "modified": "2024-12-19T00:00:00Z"
+  },
+  "mouse": {
+    "dpi": 800,
+    "polling_rate": 1000,
+    "smoothing_enabled": true,
+    "smoothing_strength": 0.5,
+    "angle_snapping": false,
+    "acceleration_disabled": true
+  },
+  "keyboard": {
+    "polling_rate": 1000,
+    "repeat_delay": 250,
+    "repeat_rate": 30,
+    "anti_ghosting": true,
+    "rapid_trigger": false,
+    "snap_tap": false
+  },
+  "macros": [],
+  "hotkeys": {
+    "dpi_up": "Ctrl+Shift+Up",
+    "dpi_down": "Ctrl+Shift+Down",
+    "profile_switch": "Ctrl+Shift+P",
+    "emergency_disable": "Ctrl+Alt+Z"
+  },
+  "game_detection": {
+    "enabled": true,
+    "auto_switch": true,
+    "detected_games": []
+  }
+}
