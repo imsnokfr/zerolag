@@ -1,0 +1,4 @@
+---
+alwaysApply: true
+---
+- Approach emphasizes a clear project structure with separate directories for source code, tests, docs, and config.

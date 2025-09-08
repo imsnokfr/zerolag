@@ -1,0 +1,103 @@
+{
+  "mcpServers": {
+    "TestSprite": {
+      "command": "npx @testsprite/testsprite-mcp@latest",
+      "env": {
+        "API_KEY": "sk-user-fSPpEksTSVErvhbZlRhGf64PVd6dG07AklYat_tPTHkOrL59E6ymBEzt0S45wkilZ2vPLv2PUgoBThODXuUretRE8ErMlJgMSND_KxA16COacUYYPnFm3ez8b4BkgsUktP0"
+      },
+      "args": []
+    },
+    "context7": {
+      "url": "https://mcp.context7.com/mcp",
+      "headers": {
+        "CONTEXT7_API_KEY": "ctx7sk-4c685c92-9582-4113-8f5d-e8fdf0480892"
+      }
+    },
+    "Magic MCP": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "npx",
+        "-y",
+        "@21st-dev/magic@latest",
+        "API_KEY=\"4270a7f7c7445ef6300d351049f1a9835d9096757c12c33af22b97276209f486\""
+      ],
+      "env": {}
+    },
+    "godot": {
+      "command": "node",
+      "args": [
+        "/absolute/path/to/godot-mcp/build/index.js"
+      ],
+      "env": {
+        "DEBUG": "true"
+      }
+    },
+    "task-master-ai": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "--package=task-master-ai",
+        "task-master-ai"
+      ],
+      "env": {
+        "ANTHROPIC_API_KEY": "YOUR_ANTHROPIC_API_KEY_HERE",
+        "PERPLEXITY_API_KEY": "YOUR_PERPLEXITY_API_KEY_HERE",
+        "OPENAI_API_KEY": "YOUR_OPENAI_KEY_HERE",
+        "GOOGLE_API_KEY": "YOUR_GOOGLE_KEY_HERE",
+        "XAI_API_KEY": "YOUR_XAI_KEY_HERE",
+        "OPENROUTER_API_KEY": "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",
+        "MISTRAL_API_KEY": "YOUR_MISTRAL_KEY_HERE",
+        "AZURE_OPENAI_API_KEY": "YOUR_AZURE_KEY_HERE",
+        "OLLAMA_API_KEY": "YOUR_OLLAMA_API_KEY_HERE"
+      }
+    },
+    "exa": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://mcp.exa.ai/mcp?exaApiKey=77db63dc-65f2-45fc-b5cc-708af163c3ad"
+      ]
+    },
+    "Ref": {
+      "type": "http",
+      "url": "https://api.ref.tools/mcp?apiKey=YOUR_API_KEY",
+      "headers": {}
+    },
+    "sequential-thinking": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ]
+    },
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "@playwright/mcp@latest"
+      ]
+    },
+    "blender": {
+      "command": "uvx",
+      "args": [
+        "blender-mcp"
+      ]
+    },
+    "semgrep": {
+      "type": "streamable-http",
+      "url": "https://mcp.semgrep.ai/mcp"
+    },
+    "MCP Docs": {
+      "url": "https://gitmcp.io/docs"
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "${workspaceFolder}"
+      ]
+    }
+  }
+}

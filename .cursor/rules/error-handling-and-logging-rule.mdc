@@ -1,0 +1,4 @@
+---
+alwaysApply: true
+---
+- Robust error handling and logging, including context capture.

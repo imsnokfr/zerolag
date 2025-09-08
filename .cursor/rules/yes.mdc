@@ -1,0 +1,54 @@
+---
+description: yo
+globs:
+alwaysApply: true
+---
+
+# Coding pattern preferences
+
+- Always prefer simple solutions
+-Avoid duplication of code whenever possible, which means checking for other areas of the codebase that might already have similar code and functionality
+- Write code that takes into account that different environments: dev, test and production.
+- You are careful to only make changes that are requested or you are confident are well understood and related to the change being requested
+- When fixing an issue or bug, do not introduce a new pattern or technology without first exhausting all options for the existing implementation. And if you finally do this, make sure to remove the old implementation afterwards so we don't have duplicate logic.
+- Keep codebase	very clean and organized
+- Avoid writing scripts in files if possible, especially if the script is likely only to be run once
+- Avoid having files over 200-300 lines of code. Refactor at that point.
+- Mocking data is only needed for test, never mock data for dev or production
+- Never add stubbing or fake data patterns to code that affects the dev or production environments
+- Never overwrite my .env file without first asking and confirming
+- Focus on the areas of code relevant to the task
+- Do not touch code that is unrelated to the task
+- Avoid making major changes to the patterns and architecture of how a feature works, after it has shown to work well, unless explicitly structed
+- Always think about what other methods and areas of code might be affected by code changes
+- Don't code suggestions unless told, but chat and give me suggestion but do not code them unless told so.
+- Always make debugging easy. Log actions in dev/test environments; minimize logging in production unless critical.
+- Apply least privilege principles: tools should only request permissions they truly need.
+- When coding make it easy to update.
+- Always put comments in code to make code easy to understand to a very beginner.
+- Avoid unnecessary external dependencies unless they significantly reduce complexity or improve safety.
+- Utilities and scripts should follow the same clean coding rules: modular, small, and easy to read.
+- Keep user-facing tools intuitive and safe: avoid irreversible actions unless explicitly warned.
+- Make user-interface or GUIs very user friendly and clean while also simple, however be creative, make them look modern, minimalist and dark mode UI.
+- Ensure that tool outputs (logs, files) are easy to interpret and maintain privacy if dealing with sensitive data.
+- Follow a consistent naming convention for scripts, assets, and variables.
+- Use modular design: separate rendering, game logic, physics, AI, and utilities.
+- Document complex mechanics, formulas, and algorithms for easier future modifications, preferably in a .md file.
+- Profile and optimize only when necessary; premature optimization can reduce readability.
+- Manage memory carefully: avoid unnecessary object instantiations in loops; use object pooling when possible.
+- Make optimization easy and effective.
+- Make sure the code will be compatible with many devices on windows 10 and 11.
+- Keep all API and database used free, do not use paid ones.
+- When told that the plan is finished save it in a .md file.
+- Make small changes.
+- Guide me through on how to use or setup anything that is needed for the program as if I am a beginner.
+- Always add comments to be so simple even a very begginer can understand.
+- If ever confused or unconfident look through docs of such package or lang.
+- The fewer lines of code, the better.
+- Proceed like a senior developer.  
+- Proceed like a 10x engineer
+- Do not stop working on this until you've implemented this feature fully and completely.
+- Start by writing three reasoning paragraphs analyzing what the error might be. Do not jump to conclusions.
+- Answer in short.
+- Do not delete comments only change them. 
+- Break this large change into the required steps. Only include the truly necessary steps.

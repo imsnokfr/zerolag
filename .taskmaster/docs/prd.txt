@@ -1,0 +1,207 @@
+# Product Requirements Document (PRD)
+
+## 1. Overview
+
+### 1.1 Product Name
+
+ZeroLag
+
+### 1.2 Product Description
+
+ZeroLag is a lightweight, Python-based desktop application designed to optimize standard mouse and keyboard inputs for competitive gaming, targeting players using generic hardware without proprietary software. By leveraging low-level system APIs, event interception, and advanced algorithms, ZeroLag minimizes input latency, maximizes responsiveness, and enables rapid, precise actions for genres like FPS, MOBA, RTS, and MMO. It delivers gaming-grade performance (e.g., ultra-smooth aiming, rapid key presses) with negligible system overhead, ensuring no FPS drops or lag spikes.
+
+Key features include software-emulated DPI scaling (400-26000), enhanced polling rates (up to 8000Hz) for both mouse and keyboard, jitter-free cursor tracking and key registration via high-frequency input queues, customizable keyboard repeat rates, macro recording, key/button remapping, auto-profile switching, and emulations of advanced features like Rapid Trigger and Snap Tap. Both mouse and keyboard inputs are queued into internal buffers and processed/updated at high frequencies (up to 8000Hz) for ultra-consistent and responsive movement and key actions. A sleek GUI offers deep user customization, including game-specific profiles, hotkey switching, and real-time performance metrics. ZeroLag runs as a system tray app or background daemon on Windows, macOS, and Linux, optimized for zero-impact performance (<1% CPU/memory usage).
+
+### 1.3 Target Audience
+
+- Competitive gamers using basic USB/PS2 mice and keyboards (e.g., non-gaming Dell, Logitech, or Amazon Basics peripherals).
+- Players in latency-sensitive genres: FPS (e.g., Valorant, CS2).
+- Budget gamers seeking high-end input optimizations without investing in premium hardware or bloated software suites.
+
+### 1.4 Business Goals
+
+- Achieve pro-level performance: Reduce input lag by 30-50% and improve input speed/accuracy by 20-40% (measured via aim trainers, key spam tests, or in-game benchmarks).
+- Build a community via open-source distribution on GitHub, targeting 100,000 downloads in year one through gaming communities (e.g., Reddit, Discord).
+- Enable profile sharing for game-specific presets, fostering viral adoption.
+- Ensure privacy with local-only processing; no network calls or telemetry.
+
+## 2. Features
+
+### 2.1 Mouse Optimization
+
+- **DPI Emulation and Customization**:
+
+  - Software-based DPI adjustment from 400 to 26,000 in 50-unit increments, using OS cursor sensitivity tweaks and raw input processing to emulate hardware DPI (inspired by Logitech and Razer high-DPI sensors).
+  - Real-time DPI slider in GUI with visual feedback (e.g., cursor speed preview).
+  - Presets for common gaming scenarios: "Low DPI Sniping" (400-800), "Mid-Range Aim" (800-1600), "High-Speed Tracking" (1600+).
+  - Multiple sensitivity stages: Up to 5 DPI levels with on-the-fly shifting via buttons or hotkeys (similar to Razer and Logitech multi-stage DPI).
+
+- **Polling Rate Enhancement**:
+
+  - Poll mouse inputs at up to 8000Hz (hardware-dependent; fallback to high-rate software polling).
+  - Implement adaptive polling to balance performance and system load, with user-selectable rates (125Hz, 250Hz, 500Hz, 1000Hz, 2000Hz, 4000Hz, 8000Hz).
+
+- **Input Queuing and Rapid Updating**:
+
+  - Queue mouse events (position, movement, clicks) into an internal buffer for processing.
+  - Rapidly update and process the queue at user-configurable high frequencies (up to 8000Hz sync with polling) to ensure consistent, jitter-free, and highly responsive mouse movement.
+  - Buffer management options: Adjustable queue size (e.g., 10-100 events) to prevent overflow while smoothing inputs, with algorithms to prioritize recent events for real-time feel.
+
+- **Smoothing and Precision**:
+
+  - Apply low-pass filters and exponential moving averages to eliminate cursor jitter, ensuring "smoothest aim" for pixel-perfect tracking in FPS games.
+  - "Consistent Shots" mode: Stabilize click registration with adjustable click dead zones and lift-off detection emulation for rapid, accurate clicks (e.g., headshots or ability spam).
+  - Disable OS acceleration (e.g., Windows "Enhance Pointer Precision") for raw input feel.
+  - Angle snapping and prediction toggles for straight-line movements or cursor correction (common in pro mouse software).
+  - Rotation adjustment: Compensate for grip styles to allow straight lines on curved motions (Razer-inspired).
+
+- **Advanced Tweaks**:
+
+  - Hotkey-based DPI/profile switching for in-game flexibility (e.g., sniper scope vs. normal aim).
+  - Hypershift mode: Assign secondary functions to buttons via a modifier key (Razer Hypershift-like).
+
+### 2.2 Keyboard Optimization
+
+- **Polling Rate and Speed Boost**:
+
+  - Hook keyboard events at up to 8000Hz using low-level APIs, bypassing OS defaults for near-instant key detection (matching Wooting's true 8kHz).
+  - Adjustable key repeat delay (0-500ms) and rate (up to 50 chars/sec) for rapid-fire inputs in games (e.g., ability combos, macro spamming).
+  - Dynamic polling adjustment: Boost rates during high-intensity key bursts (e.g., detected via >10 keys/sec).
+
+- **Input Queuing and Rapid Updating**:
+
+  - Queue keyboard events (key presses, releases) into an internal buffer for processing.
+  - Rapidly update and process the queue at user-configurable high frequencies (up to 8000Hz sync with polling) to ensure consistent, lag-free, and highly responsive key actions.
+  - Buffer management options: Adjustable queue size (e.g., 10-100 events) to prevent overflow while ensuring smooth key registration, with algorithms to prioritize recent events for real-time feel.
+
+- **Anti-Ghosting and NKRO Simulation**:
+
+  - Emulate n-key rollover (NKRO) for simultaneous key presses, ensuring no dropped inputs during complex combos (e.g., Ctrl+Shift+Q+W in MOBAs).
+  - Debounce algorithms with user-configurable thresholds to eliminate chatter on low-quality keyboards.
+
+- **Rapid Key Actions**:
+
+  - Customizable key remapping for game-specific shortcuts or macros (e.g., one-key spell rotations in MMOs).
+  - "Turbo Mode": Simulate rapid key repeats for single presses (e.g., for spamming jump or attack).
+  - Adaptive response tuning: Auto-detect typing patterns and optimize for burst inputs (e.g., reduce latency during fast WASD movement).
+  - Adjustable actuation emulation: Software thresholds for key activation/release to simulate variable depth (Wooting-inspired for membrane keyboards).
+  - Rapid Trigger emulation: Dynamically reset key states based on press/release velocity, enabling faster resets for repeated actions (e.g., counter-strafing in FPS).
+  - Snap Tap / Rappy Snappy emulation: Handle simultaneous opposite directions (e.g., A+D) by prioritizing the last input, preventing neutral states for rapid direction changes (Wooting's innovation).
+
+### 2.3 Macro and Programming Features
+
+- **Macro Recording and Playback**:
+
+  - Record and edit macros including key presses, mouse movements/clicks, delays, and loops (supports nested macros like Razer Synapse).
+  - Assign macros to any mouse button or keyboard key; include text pasting for chat macros.
+  - Real-time recording with playback speed adjustments.
+
+- **Button and Key Assignments**:
+
+  - Fully programmable buttons/keys: Assign any action, including OS commands, media controls, or game-specific functions (Logitech/Razer style).
+  - Multi-layer assignments: Primary and secondary functions via modifiers (e.g., Hypershift).
+
+### 2.4 User Customization and Interface
+
+- **Profile System**:
+
+  - Save/load multiple profiles (e.g., "CS2 Aim," "LoL Combos," "WoW Macros") stored as JSON for easy sharing.
+  - Community preset library: Import/export profiles for popular games via GitHub or in-app browser.
+  - Automatic profile switching: Detect running games (e.g., via process name) and apply profiles seamlessly (Logitech G HUB feature).
+  - Onboard memory emulation: Save profiles to hardware if supported; otherwise, to local files.
+
+- **GUI Design**:
+
+  - Built with PyQt5 for a modern, lightweight interface.
+  - Features:
+    - Sliders for DPI, polling rates, repeat delays/rates, actuation thresholds, and queue settings (mouse and keyboard).
+    - Real-time latency and performance meters (e.g., input lag in ms, clicks/sec, key presses/sec, queue depth).
+    - Visual editor for mouse smoothing and keyboard response.
+    - Game detection: Auto-apply profiles based on running .exe (e.g., "valorant.exe").
+    - Macro editor with timeline view for precise timing.
+  - System tray integration: Minimize to tray with quick access to toggle optimizations.
+
+- **Customization Depth**:
+
+  - Per-game sensitivity and key mappings.
+  - Advanced settings: Raw input buffer size, polling priority, filter strength, debounce levels, and queue processing rates (mouse and keyboard).
+  - In-app benchmark tool: Test aim accuracy (e.g., click target test) or key speed (e.g., words-per-minute simulator).
+
+### 2.5 Performance and Compatibility
+
+- **Zero Overhead**:
+
+  - Target <1% CPU and <50MB RAM usage via efficient threading (Python asyncio or threading module).
+  - Auto-throttle optimizations during low input activity to minimize impact.
+  - Latency overhead <5ms for all processing (measured via event-to-action timing).
+
+- **Cross-Platform Support**:
+
+  - **Windows**: Use Win32 API (pywin32) for raw input and event hooks.
+  - **macOS**: Leverage Quartz Event Services (pyObjC) for low-level access.
+  - **Linux**: Integrate with evdev/libinput (python-evdev) for input handling.
+  - Fallback to pynput for basic cross-platform compatibility.
+
+- **Hardware Compatibility**:
+
+  - Support generic USB/PS2 devices; auto-detect hardware limits (e.g., max polling rate).
+  - Warn users if hardware caps performance (e.g., 125Hz-only mice/keyboards) with fallback optimizations.
+
+- **Safety and Stability**:
+
+  - Emergency hotkey (e.g., Ctrl+Alt+Z) to disable optimizations instantly.
+  - Conflict detection for other input software (e.g., AutoHotkey, Razer Synapse).
+  - Anti-cheat compliance: Avoid memory injection or game process tampering to ensure compatibility with VAC/EAC.
+
+## 3. Technical Requirements
+
+### 3.1 Tech Stack
+
+- **Core**: Python 3.10+ for cross-platform support.
+- **Libraries**:
+  - pynput, keyboard, or mouse for event interception.
+  - PyQt5 for GUI.
+  - psutil for hardware/process detection.
+  - numpy for smoothing algorithms (e.g., low-pass filters).
+  - pywin32 (Windows), pyObjC (macOS), python-evdev (Linux) for OS-specific hooks.
+- **Packaging**: PyInstaller for standalone .exe/.app/.bin; pip-installable dependencies.
+
+### 3.2 Non-Functional Requirements
+
+- **Performance**: <5ms end-to-end latency; <1% CPU during intensive gaming.
+- **Security**: No network access; sandboxed event handling to prevent privilege issues.
+- **Accessibility**: High-contrast GUI; hotkey-driven controls for accessibility.
+- **Testing**:
+  - Unit tests for input algorithms (e.g., DPI scaling, debounce logic, queue processing).
+  - Beta testing across 20+ hardware setups (e.g., low-end mice, membrane keyboards).
+  - In-game validation with titles like Valorant, League of Legends, and StarCraft II.
+
+## 4. User Journey
+
+1. **Installation**: Download from GitHub, run setup.py or executable; auto-detects hardware.
+2. **Onboarding**: Wizard guides DPI/polling/queue setup with in-app aim and typing tests.
+3. **Customization**: Configure profiles, tweak settings via GUI, save presets.
+4. **Gameplay**: Runs in background; auto-applies game-specific profiles; monitor via tray or overlay.
+5. **Community**: Share/import profiles; check for updates via in-app GitHub integration.
+
+## 5. Risks and Mitigations
+
+- **Hardware Limits**: Low-end devices may cap polling at 125Hz; mitigate with software polling and user warnings.
+- **Anti-Cheat Flags**: Ensure no memory manipulation; provide transparency via open-source code.
+- **Over-Optimization**: Aggressive settings may cause input instability; include safe defaults and reset options.
+- **OS Compatibility**: Test across Windows 10/11, macOS Ventura+, and Ubuntu/Debian to avoid API issues.
+
+## 6. Roadmap
+
+- **MVP (v1.0)**: Core DPI, polling, smoothing, and input queuing (mouse and keyboard); basic GUI with profiles.
+- **v1.1**: Macro system, remapping, and auto-profile switching.
+- **v1.2**: Advanced emulations like Rapid Trigger and Snap Tap.
+- **v2.0**: ML-based auto-tuning (e.g., detect aim patterns and suggest DPI).
+- **Future**: Cloud-synced profiles (optional, opt-in); VR/AR input support.
+
+## 7. Success Metrics
+
+- **Performance**: 30%+ lag reduction in aim trainers; 20%+ faster key actions in spam tests.
+- **Adoption**: 100,000 GitHub downloads in 12 months; 1,000+ shared profiles.
+- **Stability**: <1% crash rate across supported platforms; 99% uptime during gaming sessions.
+- **User Feedback**: 4.5+ star rating on GitHub; positive mentions in gaming subreddits.
