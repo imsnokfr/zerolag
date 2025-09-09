@@ -1,0 +1,259 @@
+{
+  "export_timestamp": 1757382077.6680543,
+  "monitoring_interval": 0.5,
+  "targets": {
+    "cpu_percent": 1.0,
+    "memory_mb": 50.0,
+    "events_per_second": 1000,
+    "drop_rate": 0.01,
+    "processing_latency_ms": 5.0
+  },
+  "thresholds": {
+    "cpu_percent": {
+      "warning": 2.0,
+      "critical": 5.0
+    },
+    "memory_mb": {
+      "warning": 75.0,
+      "critical": 100.0
+    },
+    "events_per_second": {
+      "warning": 500,
+      "critical": 100
+    },
+    "drop_rate": {
+      "warning": 0.05,
+      "critical": 0.1
+    },
+    "processing_latency_ms": {
+      "warning": 10.0,
+      "critical": 20.0
+    }
+  },
+  "performance_history": [
+    {
+      "timestamp": 1757382072.6346898,
+      "cpu_percent": 0.0,
+      "memory_mb": 41.55078125,
+      "memory_percent": 0.20482530444584715,
+      "events_processed": 100,
+      "events_per_second": 0.0,
+      "queue_size": 10,
+      "queue_utilization": 0.1,
+      "events_dropped": 1,
+      "drop_rate": 0.0,
+      "processing_latency_ms": 0.5,
+      "thread_count": 8,
+      "uptime_seconds": 1.008880376815796
+    },
+    {
+      "timestamp": 1757382073.1381583,
+      "cpu_percent": 0.0,
+      "memory_mb": 41.88671875,
+      "memory_percent": 0.20648131424018226,
+      "events_processed": 200,
+      "events_per_second": 198.6221527679121,
+      "queue_size": 20,
+      "queue_utilization": 0.2,
+      "events_dropped": 2,
+      "drop_rate": 0.0,
+      "processing_latency_ms": 1.0,
+      "thread_count": 8,
+      "uptime_seconds": 1.5123488903045654
+    },
+    {
+      "timestamp": 1757382073.6425638,
+      "cpu_percent": 0.0,
+      "memory_mb": 41.90234375,
+      "memory_percent": 0.2065583379515467,
+      "events_processed": 300,
+      "events_per_second": 198.4375007392373,
+      "queue_size": 30,
+      "queue_utilization": 0.30000000000000004,
+      "events_dropped": 3,
+      "drop_rate": 0.0,
+      "processing_latency_ms": 1.5,
+      "thread_count": 8,
+      "uptime_seconds": 2.016754388809204
+    },
+    {
+      "timestamp": 1757382074.1565373,
+      "cpu_percent": 0.0,
+      "memory_mb": 41.90625,
+      "memory_percent": 0.2065775938793878,
+      "events_processed": 400,
+      "events_per_second": 197.12882050404733,
+      "queue_size": 40,
+      "queue_utilization": 0.4,
+      "events_dropped": 4,
+      "drop_rate": 0.0,
+      "processing_latency_ms": 2.0,
+      "thread_count": 8,
+      "uptime_seconds": 2.5307278633117676
+    },
+    {
+      "timestamp": 1757382074.66915,
+      "cpu_percent": 0.0,
+      "memory_mb": 41.90625,
+      "memory_percent": 0.2065775938793878,
+      "events_processed": 500,
+      "events_per_second": 196.6123392957696,
+      "queue_size": 50,
+      "queue_utilization": 0.5,
+      "events_dropped": 5,
+      "drop_rate": 0.0,
+      "processing_latency_ms": 2.5,
+      "thread_count": 8,
+      "uptime_seconds": 3.0433406829833984
+    },
+    {
+      "timestamp": 1757382075.175167,
+      "cpu_percent": 3.1,
+      "memory_mb": 41.90625,
+      "memory_percent": 0.2065775938793878,
+      "events_processed": 600,
+      "events_per_second": 196.81341169762115,
+      "queue_size": 60,
+      "queue_utilization": 0.6000000000000001,
+      "events_dropped": 6,
+      "drop_rate": 0.0,
+      "processing_latency_ms": 3.0,
+      "thread_count": 8,
+      "uptime_seconds": 3.5493576526641846
+    },
+    {
+      "timestamp": 1757382075.686937,
+      "cpu_percent": 0.0,
+      "memory_mb": 41.90625,
+      "memory_percent": 0.2065775938793878,
+      "events_processed": 700,
+      "events_per_second": 196.5764709769597,
+      "queue_size": 70,
+      "queue_utilization": 0.7000000000000001,
+      "events_dropped": 7,
+      "drop_rate": 0.0,
+      "processing_latency_ms": 3.5,
+      "thread_count": 8,
+      "uptime_seconds": 4.061127662658691
+    },
+    {
+      "timestamp": 1757382076.1992817,
+      "cpu_percent": 0.0,
+      "memory_mb": 41.90625,
+      "memory_percent": 0.2065775938793878,
+      "events_processed": 800,
+      "events_per_second": 196.37591697990138,
+      "queue_size": 80,
+      "queue_utilization": 0.8,
+      "events_dropped": 8,
+      "drop_rate": 0.0,
+      "processing_latency_ms": 4.0,
+      "thread_count": 8,
+      "uptime_seconds": 4.573472261428833
+    },
+    {
+      "timestamp": 1757382076.7035024,
+      "cpu_percent": 0.0,
+      "memory_mb": 41.90625,
+      "memory_percent": 0.2065775938793878,
+      "events_processed": 900,
+      "events_per_second": 196.61755822465668,
+      "queue_size": 90,
+      "queue_utilization": 0.9,
+      "events_dropped": 9,
+      "drop_rate": 0.0,
+      "processing_latency_ms": 4.5,
+      "thread_count": 8,
+      "uptime_seconds": 5.077692985534668
+    },
+    {
+      "timestamp": 1757382077.2083383,
+      "cpu_percent": 0.0,
+      "memory_mb": 41.90625,
+      "memory_percent": 0.2065775938793878,
+      "events_processed": 0,
+      "events_per_second": 196.61755822465668,
+      "queue_size": 0,
+      "queue_utilization": 0.0,
+      "events_dropped": 0,
+      "drop_rate": 0.0,
+      "processing_latency_ms": 0.0,
+      "thread_count": 8,
+      "uptime_seconds": 5.582528829574585
+    }
+  ],
+  "alerts": [
+    {
+      "timestamp": 1757382073.6425638,
+      "severity": "critical",
+      "metric": "events_per_second",
+      "value": 198.6221527679121,
+      "threshold": 100,
+      "message": "events_per_second is 198.62, exceeding critical threshold of 100.00"
+    },
+    {
+      "timestamp": 1757382074.1565373,
+      "severity": "critical",
+      "metric": "events_per_second",
+      "value": 198.4375007392373,
+      "threshold": 100,
+      "message": "events_per_second is 198.44, exceeding critical threshold of 100.00"
+    },
+    {
+      "timestamp": 1757382074.66915,
+      "severity": "critical",
+      "metric": "events_per_second",
+      "value": 197.12882050404733,
+      "threshold": 100,
+      "message": "events_per_second is 197.13, exceeding critical threshold of 100.00"
+    },
+    {
+      "timestamp": 1757382075.175167,
+      "severity": "warning",
+      "metric": "cpu_percent",
+      "value": 3.1,
+      "threshold": 2.0,
+      "message": "cpu_percent is 3.10, exceeding warning threshold of 2.00"
+    },
+    {
+      "timestamp": 1757382075.175167,
+      "severity": "critical",
+      "metric": "events_per_second",
+      "value": 196.6123392957696,
+      "threshold": 100,
+      "message": "events_per_second is 196.61, exceeding critical threshold of 100.00"
+    },
+    {
+      "timestamp": 1757382075.686937,
+      "severity": "critical",
+      "metric": "events_per_second",
+      "value": 196.81341169762115,
+      "threshold": 100,
+      "message": "events_per_second is 196.81, exceeding critical threshold of 100.00"
+    },
+    {
+      "timestamp": 1757382076.1992817,
+      "severity": "critical",
+      "metric": "events_per_second",
+      "value": 196.5764709769597,
+      "threshold": 100,
+      "message": "events_per_second is 196.58, exceeding critical threshold of 100.00"
+    },
+    {
+      "timestamp": 1757382076.7035024,
+      "severity": "critical",
+      "metric": "events_per_second",
+      "value": 196.37591697990138,
+      "threshold": 100,
+      "message": "events_per_second is 196.38, exceeding critical threshold of 100.00"
+    },
+    {
+      "timestamp": 1757382077.2083383,
+      "severity": "critical",
+      "metric": "events_per_second",
+      "value": 196.61755822465668,
+      "threshold": 100,
+      "message": "events_per_second is 196.62, exceeding critical threshold of 100.00"
+    }
+  ]
+}

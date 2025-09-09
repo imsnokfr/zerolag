@@ -1,0 +1,23 @@
+{
+  "name": "Loop Test Macro",
+  "description": "A macro with loops",
+  "created_at": 1757456059.795058,
+  "modified_at": 1757456059.7950585,
+  "version": "1.0",
+  "events": [
+    {
+      "event_type": "key_press",
+      "timestamp": 0.0006451606750488281,
+      "data": {
+        "key": "w"
+      },
+      "duration": 0.0,
+      "loop_id": null,
+      "comment": null
+    }
+  ],
+  "loops": {},
+  "metadata": {},
+  "total_duration": 0.0,
+  "event_count": 0
+}

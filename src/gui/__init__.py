@@ -1,7 +1,16 @@
 """
-ZeroLag GUI Module
+ZeroLag GUI Package
 
-PyQt5-based user interface components and dialogs.
+This package contains the PyQt5-based graphical user interface for ZeroLag.
+It provides a modern, dark-themed interface for controlling input optimization
+settings and monitoring performance in real-time.
+
+Modules:
+    - main_window: Main application window with all controls and monitoring
+    - application: Main application class and entry point
 """
 
-__all__ = ['components', 'dialogs', 'widgets']
+from .main_window import ZeroLagMainWindow
+from .application import ZeroLagApplication, main
+
+__all__ = ['ZeroLagMainWindow', 'ZeroLagApplication', 'main']

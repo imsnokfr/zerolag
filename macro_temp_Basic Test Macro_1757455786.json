@@ -1,0 +1,12 @@
+{
+  "name": "Basic Test Macro",
+  "description": "A basic test macro",
+  "created_at": 1757455781.6723852,
+  "modified_at": 1757455781.6723857,
+  "version": "1.0",
+  "events": [],
+  "loops": {},
+  "metadata": {},
+  "total_duration": 0.0,
+  "event_count": 0
+}
