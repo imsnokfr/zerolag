@@ -1,6 +1,6 @@
 # Task ID: 12
 # Title: Profile Management System
-# Status: in-progress
+# Status: done
 # Dependencies: 4
 # Priority: medium
 # Description: Develop a system for saving and loading multiple user profiles with customizable settings.
@@ -11,7 +11,7 @@ Implement functionality to save user settings as JSON files and load them as nee
 Create multiple profiles and verify that the application can switch between them without issues.
 
 # Subtasks:
-## 1. Create Profile Data Structure [pending]
+## 1. Create Profile Data Structure [done]
 ### Dependencies: None
 ### Description: Design and implement the core profile data structure to store all user settings and configurations
 ### Details:
@@ -26,7 +26,7 @@ Create a comprehensive Profile class that can store:
 - Hotkey configurations
 - Gaming mode presets
 
-## 2. Implement Profile Manager [pending]
+## 2. Implement Profile Manager [done]
 ### Dependencies: 12.1
 ### Description: Create the ProfileManager class to handle profile operations like save, load, delete, and switch
 ### Details:
@@ -38,7 +38,7 @@ Implement comprehensive profile management including:
 - Profile metadata management (creation date, last modified, etc.)
 - Profile backup and restore functionality
 
-## 3. Create Gaming Mode Presets [pending]
+## 3. Create Gaming Mode Presets [done]
 ### Dependencies: 12.1
 ### Description: Implement predefined gaming mode presets optimized for different game genres
 ### Details:
@@ -50,7 +50,7 @@ Create gaming mode presets including:
 - Custom Mode: User-defined settings
 - Quick switching between modes
 
-## 4. Integrate with GUI [pending]
+## 4. Integrate with GUI [done]
 ### Dependencies: 12.2, 12.3
 ### Description: Add profile management controls to the main GUI window
 ### Details:
@@ -63,7 +63,7 @@ Integrate profile management into the GUI including:
 - Profile status indicators
 - Settings preview before applying
 
-## 5. Add Profile Import/Export [pending]
+## 5. Add Profile Import/Export [done]
 ### Dependencies: 12.2
 ### Description: Implement profile sharing functionality with import/export capabilities
 ### Details:
@@ -76,7 +76,7 @@ Add profile sharing features including:
 - Profile sharing via file or URL
 - Profile backup and restore
 
-## 6. Create Profile Tests [pending]
+## 6. Create Profile Tests [done]
 ### Dependencies: 12.1, 12.2, 12.3, 12.4, 12.5
 ### Description: Develop comprehensive tests for the profile management system
 ### Details:

@@ -603,8 +603,76 @@
         "dependencies": [
           4
         ],
-        "status": "pending",
-        "subtasks": []
+        "status": "in-progress",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Create Hotkey System Architecture",
+            "description": "Design and implement the core hotkey system with global hotkey detection",
+            "details": "Implement the foundational hotkey system including:\n- Global hotkey detection using Windows API\n- Hotkey registration and management\n- Thread-safe hotkey processing\n- Hotkey conflict detection and resolution\n- System-wide hotkey hooks that work even when ZeroLag is minimized",
+            "status": "done",
+            "dependencies": [],
+            "parentTaskId": 13
+          },
+          {
+            "id": 2,
+            "title": "Implement Profile Switching Hotkeys",
+            "description": "Add hotkeys for quick profile switching during gameplay",
+            "details": "Implement profile switching hotkeys including:\n- Cycle through profiles (Ctrl+Alt+P)\n- Switch to specific profiles (Ctrl+Alt+1, Ctrl+Alt+2, etc.)\n- Quick preset switching (Ctrl+Alt+F for FPS, Ctrl+Alt+M for MOBA, etc.)\n- Profile switching with visual feedback\n- Hotkey conflict prevention with other applications",
+            "status": "done",
+            "dependencies": [
+              "13.1"
+            ],
+            "parentTaskId": 13
+          },
+          {
+            "id": 3,
+            "title": "Implement DPI Adjustment Hotkeys",
+            "description": "Add hotkeys for real-time DPI adjustments during gameplay",
+            "details": "Implement DPI adjustment hotkeys including:\n- Increase DPI (Ctrl+Alt+Up Arrow)\n- Decrease DPI (Ctrl+Alt+Down Arrow)\n- Quick DPI presets (Ctrl+Alt+1-9 for different DPI values)\n- DPI step adjustment (small, medium, large steps)\n- Visual DPI indicator overlay\n- DPI adjustment limits and validation",
+            "status": "done",
+            "dependencies": [
+              "13.1"
+            ],
+            "parentTaskId": 13
+          },
+          {
+            "id": 4,
+            "title": "Implement Emergency Hotkeys",
+            "description": "Add emergency hotkeys for critical functions",
+            "details": "Implement emergency hotkeys including:\n- Emergency stop (Ctrl+Alt+Delete) - stops all ZeroLag functions\n- Toggle ZeroLag on/off (Ctrl+Alt+Z)\n- Reset to default settings (Ctrl+Alt+R)\n- Emergency profile reset (Ctrl+Alt+Shift+R)\n- System tray notification for emergency actions\n- Hotkey override for system conflicts",
+            "status": "pending",
+            "dependencies": [
+              "13.1"
+            ],
+            "parentTaskId": 13
+          },
+          {
+            "id": 5,
+            "title": "Create Hotkey Configuration System",
+            "description": "Implement hotkey customization and configuration management",
+            "details": "Implement hotkey configuration including:\n- Hotkey settings storage and persistence\n- Custom hotkey assignment interface\n- Hotkey conflict detection and warnings\n- Hotkey groups and categories\n- Import/export hotkey configurations\n- Hotkey help and documentation system",
+            "status": "pending",
+            "dependencies": [
+              "13.1",
+              "13.2",
+              "13.3",
+              "13.4"
+            ],
+            "parentTaskId": 13
+          },
+          {
+            "id": 6,
+            "title": "Integrate Hotkeys with GUI and Testing",
+            "description": "Integrate hotkey system with GUI and create comprehensive tests",
+            "details": "Integrate hotkeys with GUI and testing including:\n- GUI hotkey configuration panel\n- Hotkey status indicators in main window\n- Real-time hotkey testing interface\n- Comprehensive hotkey functionality tests\n- Performance testing for hotkey responsiveness\n- Integration testing with profile system",
+            "status": "pending",
+            "dependencies": [
+              "13.5"
+            ],
+            "parentTaskId": 13
+          }
+        ]
       },
       {
         "id": 14,
@@ -768,7 +836,7 @@
     ],
     "metadata": {
       "created": "2025-09-08T01:28:27.806Z",
-      "updated": "2025-09-09T22:32:17.997Z",
+      "updated": "2025-09-09T23:11:50.946Z",
       "description": "Tasks for master context"
     }
   }

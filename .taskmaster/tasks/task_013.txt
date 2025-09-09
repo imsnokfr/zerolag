@@ -1,6 +1,6 @@
 # Task ID: 13
 # Title: Implement Hotkey Functionality
-# Status: pending
+# Status: in-progress
 # Dependencies: 4
 # Priority: medium
 # Description: Add hotkey support for quick profile switching and DPI adjustments during gameplay.
@@ -9,3 +9,75 @@ Use keyboard hooks to listen for specific hotkeys and trigger corresponding acti
 
 # Test Strategy:
 Test hotkey functionality by switching profiles and adjusting DPI while the application is running.
+
+# Subtasks:
+## 1. Create Hotkey System Architecture [pending]
+### Dependencies: None
+### Description: Design and implement the core hotkey system with global hotkey detection
+### Details:
+Implement the foundational hotkey system including:
+- Global hotkey detection using Windows API
+- Hotkey registration and management
+- Thread-safe hotkey processing
+- Hotkey conflict detection and resolution
+- System-wide hotkey hooks that work even when ZeroLag is minimized
+
+## 2. Implement Profile Switching Hotkeys [pending]
+### Dependencies: 13.1
+### Description: Add hotkeys for quick profile switching during gameplay
+### Details:
+Implement profile switching hotkeys including:
+- Cycle through profiles (Ctrl+Alt+P)
+- Switch to specific profiles (Ctrl+Alt+1, Ctrl+Alt+2, etc.)
+- Quick preset switching (Ctrl+Alt+F for FPS, Ctrl+Alt+M for MOBA, etc.)
+- Profile switching with visual feedback
+- Hotkey conflict prevention with other applications
+
+## 3. Implement DPI Adjustment Hotkeys [pending]
+### Dependencies: 13.1
+### Description: Add hotkeys for real-time DPI adjustments during gameplay
+### Details:
+Implement DPI adjustment hotkeys including:
+- Increase DPI (Ctrl+Alt+Up Arrow)
+- Decrease DPI (Ctrl+Alt+Down Arrow)
+- Quick DPI presets (Ctrl+Alt+1-9 for different DPI values)
+- DPI step adjustment (small, medium, large steps)
+- Visual DPI indicator overlay
+- DPI adjustment limits and validation
+
+## 4. Implement Emergency Hotkeys [pending]
+### Dependencies: 13.1
+### Description: Add emergency hotkeys for critical functions
+### Details:
+Implement emergency hotkeys including:
+- Emergency stop (Ctrl+Alt+Delete) - stops all ZeroLag functions
+- Toggle ZeroLag on/off (Ctrl+Alt+Z)
+- Reset to default settings (Ctrl+Alt+R)
+- Emergency profile reset (Ctrl+Alt+Shift+R)
+- System tray notification for emergency actions
+- Hotkey override for system conflicts
+
+## 5. Create Hotkey Configuration System [pending]
+### Dependencies: 13.1, 13.2, 13.3, 13.4
+### Description: Implement hotkey customization and configuration management
+### Details:
+Implement hotkey configuration including:
+- Hotkey settings storage and persistence
+- Custom hotkey assignment interface
+- Hotkey conflict detection and warnings
+- Hotkey groups and categories
+- Import/export hotkey configurations
+- Hotkey help and documentation system
+
+## 6. Integrate Hotkeys with GUI and Testing [pending]
+### Dependencies: 13.5
+### Description: Integrate hotkey system with GUI and create comprehensive tests
+### Details:
+Integrate hotkeys with GUI and testing including:
+- GUI hotkey configuration panel
+- Hotkey status indicators in main window
+- Real-time hotkey testing interface
+- Comprehensive hotkey functionality tests
+- Performance testing for hotkey responsiveness
+- Integration testing with profile system
+

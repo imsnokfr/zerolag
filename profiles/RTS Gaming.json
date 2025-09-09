@@ -1,0 +1,116 @@
+{
+  "metadata": {
+    "profile_id": "8033c2a7-8032-4c15-93d0-e1356b2de5c5",
+    "name": "RTS Gaming",
+    "description": "Optimized for real-time strategy games",
+    "version": "1.0.0",
+    "gaming_mode": "general",
+    "created_at": 1757457884.9153147,
+    "modified_at": 1757457884.915315,
+    "author": "ZeroLag User",
+    "tags": [],
+    "is_default": false,
+    "is_readonly": false,
+    "compatibility_version": "1.0.0",
+    "file_size": 0,
+    "checksum": ""
+  },
+  "settings": {
+    "dpi": {
+      "enabled": true,
+      "mode": "software",
+      "dpi_value": 800,
+      "sensitivity_multiplier": 1.0,
+      "acceleration_enabled": false,
+      "smoothing_enabled": true,
+      "smoothing_algorithm": "low_pass",
+      "smoothing_factor": 0.1,
+      "precision_mode": false,
+      "custom_scaling": {}
+    },
+    "polling": {
+      "mouse_polling_rate": 1000,
+      "keyboard_polling_rate": 1000,
+      "mode": "fixed",
+      "adaptive_threshold": 0.8,
+      "gaming_boost": true,
+      "power_saving_threshold": 0.3,
+      "real_time_priority": true,
+      "thread_priority": 2
+    },
+    "keyboard": {
+      "nkro_enabled": true,
+      "nkro_limit": 6,
+      "rapid_trigger_enabled": false,
+      "rapid_trigger_threshold": 0.5,
+      "debounce_enabled": true,
+      "debounce_delay": 5.0,
+      "anti_ghosting_enabled": true,
+      "snap_tap_enabled": false,
+      "snap_tap_threshold": 0.1,
+      "turbo_mode_enabled": false,
+      "turbo_rate": 10.0,
+      "adaptive_response_enabled": true,
+      "actuation_emulation_enabled": false,
+      "actuation_distance": 2.0
+    },
+    "smoothing": {
+      "enabled": true,
+      "algorithm": "low_pass",
+      "factor": 0.1,
+      "window_size": 5,
+      "adaptive_threshold": 0.5,
+      "performance_mode": false,
+      "custom_parameters": {}
+    },
+    "macro": {
+      "enabled": true,
+      "default_library": "default",
+      "auto_save": true,
+      "auto_save_interval": 30.0,
+      "max_macros_per_library": 100,
+      "max_events_per_macro": 10000,
+      "playback_speed": 1.0,
+      "loop_enabled": false,
+      "hotkey_enabled": true,
+      "macro_hotkeys": {}
+    },
+    "performance": {
+      "monitoring_enabled": true,
+      "cpu_monitoring": true,
+      "memory_monitoring": true,
+      "input_monitoring": true,
+      "update_interval": 1.0,
+      "log_performance": false,
+      "performance_thresholds": {},
+      "optimization_level": 2,
+      "memory_limit_mb": 100.0,
+      "cpu_limit_percent": 80.0
+    },
+    "gui": {
+      "theme": "dark",
+      "window_width": 800,
+      "window_height": 600,
+      "window_x": 100,
+      "window_y": 100,
+      "always_on_top": false,
+      "minimize_to_tray": true,
+      "show_performance_overlay": false,
+      "performance_overlay_position": "top_right",
+      "language": "en",
+      "font_size": 12,
+      "font_family": "Segoe UI",
+      "animations_enabled": true,
+      "compact_mode": false
+    },
+    "hotkeys": {
+      "profile_switch_hotkey": "ctrl+shift+p",
+      "macro_record_hotkey": "ctrl+shift+r",
+      "macro_play_hotkey": "ctrl+shift+space",
+      "dpi_cycle_hotkey": "ctrl+shift+d",
+      "polling_cycle_hotkey": "ctrl+shift+q",
+      "emergency_stop_hotkey": "ctrl+shift+esc",
+      "custom_hotkeys": {}
+    }
+  }
+}
