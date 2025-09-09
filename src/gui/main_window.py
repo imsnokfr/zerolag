@@ -24,6 +24,7 @@ from PyQt5.QtGui import QIcon, QFont, QPalette, QColor
 from src.core.input.input_handler import InputHandler
 from src.core.input.mouse_handler import GamingMouseHandler
 from src.core.input.keyboard_handler import GamingKeyboardHandler
+from src.core.profiles import ProfileManager, GamingModePresets, ProfileExporter
 
 
 class PerformanceMonitor(QThread):
@@ -80,9 +81,14 @@ class ZeroLagMainWindow(QMainWindow):
         self.keyboard_handler = None
         self.performance_monitor = None
         
+        # Initialize profile management
+        self.profile_manager = ProfileManager()
+        self.profile_exporter = ProfileExporter()
+        
         self.init_ui()
         self.init_input_handlers()
         self.load_settings()
+        self.refresh_profile_list()
         
     def init_ui(self):
         """Initialize the user interface."""
@@ -323,6 +329,16 @@ class ZeroLagMainWindow(QMainWindow):
         profile_select_layout.addStretch()
         profile_layout.addLayout(profile_select_layout)
         
+        # Gaming Mode Presets
+        preset_layout = QHBoxLayout()
+        preset_layout.addWidget(QLabel("Gaming Mode:"))
+        self.preset_combo = QComboBox()
+        self.preset_combo.addItems(["FPS", "MOBA", "RTS", "MMO", "Productivity", "Custom"])
+        self.preset_combo.currentTextChanged.connect(self.on_preset_changed)
+        preset_layout.addWidget(self.preset_combo)
+        preset_layout.addStretch()
+        profile_layout.addLayout(preset_layout)
+        
         # Profile Buttons
         profile_buttons_layout = QHBoxLayout()
         self.save_profile_btn = QPushButton("Save")
@@ -332,6 +348,14 @@ class ZeroLagMainWindow(QMainWindow):
         profile_buttons_layout.addWidget(self.load_profile_btn)
         profile_buttons_layout.addWidget(self.delete_profile_btn)
         profile_layout.addLayout(profile_buttons_layout)
+        
+        # Import/Export Buttons
+        import_export_layout = QHBoxLayout()
+        self.import_profile_btn = QPushButton("Import")
+        self.export_profile_btn = QPushButton("Export")
+        import_export_layout.addWidget(self.import_profile_btn)
+        import_export_layout.addWidget(self.export_profile_btn)
+        profile_layout.addLayout(import_export_layout)
         
         controls_layout.addWidget(profile_group)
         
@@ -352,6 +376,9 @@ class ZeroLagMainWindow(QMainWindow):
         self.save_profile_btn.clicked.connect(self.save_profile)
         self.load_profile_btn.clicked.connect(self.load_profile)
         self.delete_profile_btn.clicked.connect(self.delete_profile)
+        self.import_profile_btn.clicked.connect(self.import_profile)
+        self.export_profile_btn.clicked.connect(self.export_profile)
+        self.profile_combo.currentTextChanged.connect(self.on_profile_changed)
         
         # Connect checkbox signals
         self.smoothing_checkbox.toggled.connect(self.on_smoothing_changed)
@@ -895,12 +922,29 @@ class ZeroLagMainWindow(QMainWindow):
     def save_profile(self):
         """Save current settings as a profile."""
         profile_name = self.profile_combo.currentText()
-        self.log_message(f"Profile '{profile_name}' saved")
+        
+        # Create profile from current settings
+        profile = self.create_profile_from_current_settings(profile_name)
+        
+        # Save profile
+        success = self.profile_manager.save_profile(profile)
+        if success:
+            self.log_message(f"Profile '{profile_name}' saved successfully")
+            self.refresh_profile_list()
+        else:
+            QMessageBox.warning(self, "Save Failed", f"Failed to save profile '{profile_name}'")
         
     def load_profile(self):
         """Load a profile."""
         profile_name = self.profile_combo.currentText()
-        self.log_message(f"Profile '{profile_name}' loaded")
+        
+        # Load profile
+        profile = self.profile_manager.get_profile(profile_name)
+        if profile:
+            self.apply_profile_to_settings(profile)
+            self.log_message(f"Profile '{profile_name}' loaded successfully")
+        else:
+            QMessageBox.warning(self, "Load Failed", f"Profile '{profile_name}' not found")
         
     def delete_profile(self):
         """Delete a profile."""
@@ -914,9 +958,159 @@ class ZeroLagMainWindow(QMainWindow):
             )
             
             if reply == QMessageBox.Yes:
-                self.log_message(f"Profile '{profile_name}' deleted")
+                success = self.profile_manager.delete_profile(profile_name)
+                if success:
+                    self.log_message(f"Profile '{profile_name}' deleted")
+                    self.refresh_profile_list()
+                else:
+                    QMessageBox.warning(self, "Delete Failed", f"Failed to delete profile '{profile_name}'")
         else:
             QMessageBox.warning(self, "Cannot Delete", "Cannot delete the default profile.")
+    
+    def create_profile_from_current_settings(self, name: str):
+        """Create a profile from current GUI settings."""
+        from src.core.profiles import Profile, GamingMode, DPISettings, PollingSettings, KeyboardSettings, SmoothingSettings, MacroSettings, PerformanceSettings, GUISettings, HotkeySettings, ProfileSettings
+        
+        profile = Profile()
+        profile.metadata.name = name
+        profile.metadata.description = f"Profile created from current settings"
+        
+        # DPI settings
+        dpi_value = self.dpi_slider.value()
+        profile.settings.dpi = DPISettings(
+            enabled=True,
+            dpi_value=dpi_value,
+            sensitivity_multiplier=1.0,
+            smoothing_enabled=self.smoothing_checkbox.isChecked()
+        )
+        
+        # Polling settings
+        mouse_polling = int(self.mouse_polling_combo.currentText().replace("Hz", ""))
+        keyboard_polling = int(self.keyboard_polling_combo.currentText().replace("Hz", ""))
+        profile.settings.polling = PollingSettings(
+            mouse_polling_rate=mouse_polling,
+            keyboard_polling_rate=keyboard_polling
+        )
+        
+        # Keyboard settings
+        nkro_enabled = self.nkro_combo.currentText() != "Disabled"
+        rapid_trigger_enabled = self.rapid_trigger_checkbox.isChecked()
+        debounce_time = self.debounce_slider.value()
+        
+        profile.settings.keyboard = KeyboardSettings(
+            nkro_enabled=nkro_enabled,
+            rapid_trigger_enabled=rapid_trigger_enabled,
+            debounce_time_ms=debounce_time,
+            anti_ghosting_enabled=self.antighost_checkbox.isChecked()
+        )
+        
+        # Smoothing settings
+        profile.settings.smoothing = SmoothingSettings(
+            enabled=self.smoothing_checkbox.isChecked(),
+            algorithm="EMA",
+            strength=0.5
+        )
+        
+        return profile
+    
+    def apply_profile_to_settings(self, profile):
+        """Apply profile settings to GUI controls."""
+        # Apply DPI settings
+        self.dpi_slider.setValue(profile.settings.dpi.dpi_value)
+        self.dpi_value_label.setText(str(profile.settings.dpi.dpi_value))
+        
+        # Apply polling settings
+        mouse_polling_text = f"{profile.settings.polling.mouse_polling_rate}Hz"
+        keyboard_polling_text = f"{profile.settings.polling.keyboard_polling_rate}Hz"
+        self.mouse_polling_combo.setCurrentText(mouse_polling_text)
+        self.keyboard_polling_combo.setCurrentText(keyboard_polling_text)
+        
+        # Apply keyboard settings
+        self.smoothing_checkbox.setChecked(profile.settings.smoothing.enabled)
+        self.antighost_checkbox.setChecked(profile.settings.keyboard.anti_ghosting_enabled)
+        self.rapid_trigger_checkbox.setChecked(profile.settings.keyboard.rapid_trigger_enabled)
+        self.debounce_slider.setValue(profile.settings.keyboard.debounce_time_ms)
+        self.debounce_label.setText(f"{profile.settings.keyboard.debounce_time_ms}ms")
+        
+        # Update NKRO combo
+        if profile.settings.keyboard.nkro_enabled:
+            self.nkro_combo.setCurrentText("Gaming (20KRO)")
+        else:
+            self.nkro_combo.setCurrentText("Disabled")
+    
+    def refresh_profile_list(self):
+        """Refresh the profile combo box with current profiles."""
+        self.profile_combo.clear()
+        profiles = self.profile_manager.list_profiles()
+        if profiles:
+            self.profile_combo.addItems(profiles)
+        else:
+            self.profile_combo.addItem("Default")
+    
+    def on_profile_changed(self, profile_name):
+        """Handle profile selection change."""
+        if profile_name and profile_name != "Default":
+            profile = self.profile_manager.get_profile(profile_name)
+            if profile:
+                self.apply_profile_to_settings(profile)
+                self.log_message(f"Switched to profile: {profile_name}")
+    
+    def on_preset_changed(self, preset_name):
+        """Handle gaming mode preset change."""
+        if preset_name and preset_name != "Custom":
+            # Create profile from preset
+            preset_profile = None
+            if preset_name == "FPS":
+                preset_profile = GamingModePresets.create_fps_profile()
+            elif preset_name == "MOBA":
+                preset_profile = GamingModePresets.create_moba_profile()
+            elif preset_name == "RTS":
+                preset_profile = GamingModePresets.create_rts_profile()
+            elif preset_name == "MMO":
+                preset_profile = GamingModePresets.create_mmo_profile()
+            elif preset_name == "Productivity":
+                preset_profile = GamingModePresets.create_productivity_profile()
+            
+            if preset_profile:
+                self.apply_profile_to_settings(preset_profile)
+                self.log_message(f"Applied {preset_name} preset")
+    
+    def import_profile(self):
+        """Import a profile from file."""
+        from PyQt5.QtWidgets import QFileDialog
+        file_path, _ = QFileDialog.getOpenFileName(
+            self, "Import Profile", "", "JSON Files (*.json);;All Files (*)"
+        )
+        if file_path:
+            profile = self.profile_exporter.import_profile(file_path)
+            if profile:
+                self.profile_manager.save_profile(profile)
+                self.refresh_profile_list()
+                self.log_message(f"Profile imported: {profile.metadata.name}")
+            else:
+                QMessageBox.warning(self, "Import Failed", "Failed to import profile")
+    
+    def export_profile(self):
+        """Export current profile to file."""
+        from PyQt5.QtWidgets import QFileDialog
+        profile_name = self.profile_combo.currentText()
+        if profile_name == "Default":
+            QMessageBox.warning(self, "Export Failed", "Cannot export default profile")
+            return
+        
+        file_path, _ = QFileDialog.getSaveFileName(
+            self, "Export Profile", f"{profile_name}.json", "JSON Files (*.json);;All Files (*)"
+        )
+        if file_path:
+            profile = self.profile_manager.get_profile(profile_name)
+            if profile:
+                success = self.profile_exporter.export_profile(profile, file_path)
+                if success:
+                    self.log_message(f"Profile exported: {profile_name}")
+                else:
+                    QMessageBox.warning(self, "Export Failed", "Failed to export profile")
+            else:
+                QMessageBox.warning(self, "Export Failed", "Profile not found")
             
     def tray_icon_activated(self, reason):
         """Handle system tray icon activation."""

@@ -1,0 +1,11 @@
+# Task ID: 17
+# Title: Implement Emergency Hotkey
+# Status: pending
+# Dependencies: 4
+# Priority: medium
+# Description: Develop an emergency hotkey to disable optimizations instantly for user safety.
+# Details:
+Allow users to configure a hotkey that, when pressed, will disable all optimizations and revert to default input handling.
+
+# Test Strategy:
+Test the emergency hotkey to ensure it functions correctly and reverts settings as expected.

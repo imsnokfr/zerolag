@@ -1,0 +1,11 @@
+# Task ID: 5
+# Title: Implement DPI Emulation Logic
+# Status: done
+# Dependencies: 3
+# Priority: high
+# Description: Develop the logic for software-based DPI adjustment from 400 to 26,000 in 50-unit increments.
+# Details:
+Create a function that adjusts the DPI based on user input from the GUI and applies OS cursor sensitivity tweaks.
+
+# Test Strategy:
+Test DPI adjustments by moving the mouse and verifying the cursor speed matches the selected DPI.

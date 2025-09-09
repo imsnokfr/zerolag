@@ -1,0 +1,11 @@
+# Task ID: 6
+# Title: Implement Polling Rate Enhancement
+# Status: done
+# Dependencies: 3
+# Priority: high
+# Description: Develop functionality to adjust mouse polling rates up to 8000Hz, including adaptive polling.
+# Details:
+Implement a method to set polling rates based on user selection and ensure it can adapt to system performance.
+
+# Test Strategy:
+Simulate different polling rates and verify that the application responds correctly to changes.

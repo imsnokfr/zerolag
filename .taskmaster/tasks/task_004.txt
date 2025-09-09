@@ -1,0 +1,11 @@
+# Task ID: 4
+# Title: Create GUI with PyQt5
+# Status: done
+# Dependencies: 2
+# Priority: high
+# Description: Design and implement the main GUI for ZeroLag using PyQt5, including sliders for DPI and polling rate.
+# Details:
+Set up a PyQt5 application with a main window that includes sliders for DPI settings, polling rates, and buttons for profile management.
+
+# Test Strategy:
+Run the GUI application and ensure all components are displayed correctly and functional.

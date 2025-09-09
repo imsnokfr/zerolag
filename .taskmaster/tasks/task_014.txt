@@ -1,0 +1,11 @@
+# Task ID: 14
+# Title: System Tray Integration
+# Status: pending
+# Dependencies: 4
+# Priority: medium
+# Description: Implement system tray functionality to allow the application to run in the background.
+# Details:
+Use PyQt5's QSystemTrayIcon to create a tray icon that provides quick access to settings and profile management.
+
+# Test Strategy:
+Verify that the application can minimize to the tray and respond to clicks on the tray icon.

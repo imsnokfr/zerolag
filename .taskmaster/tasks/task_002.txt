@@ -1,0 +1,11 @@
+# Task ID: 2
+# Title: Define Project Structure
+# Status: done
+# Dependencies: 1
+# Priority: high
+# Description: Establish a directory structure for the ZeroLag project to organize source code, tests, and documentation.
+# Details:
+Create directories: /src for source code, /tests for unit tests, /docs for documentation, and /assets for any static files. Ensure a clear structure for easy navigation.
+
+# Test Strategy:
+Check the directory structure in the repository to ensure all directories are created as specified.

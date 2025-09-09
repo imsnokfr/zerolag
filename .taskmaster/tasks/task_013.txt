@@ -1,0 +1,11 @@
+# Task ID: 13
+# Title: Implement Hotkey Functionality
+# Status: pending
+# Dependencies: 4
+# Priority: medium
+# Description: Add hotkey support for quick profile switching and DPI adjustments during gameplay.
+# Details:
+Use keyboard hooks to listen for specific hotkeys and trigger corresponding actions in the application.
+
+# Test Strategy:
+Test hotkey functionality by switching profiles and adjusting DPI while the application is running.

@@ -1,0 +1,11 @@
+# Task ID: 10
+# Title: Implement Anti-Ghosting and NKRO Simulation
+# Status: done
+# Dependencies: 9
+# Priority: medium
+# Description: Emulate n-key rollover for simultaneous key presses to prevent input drops during complex combos.
+# Details:
+Develop algorithms to handle multiple key presses simultaneously and ensure no inputs are dropped.
+
+# Test Strategy:
+Test with multiple key presses to verify that all inputs are registered correctly.

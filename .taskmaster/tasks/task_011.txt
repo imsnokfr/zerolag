@@ -1,0 +1,11 @@
+# Task ID: 11
+# Title: Macro Recording Functionality
+# Status: done
+# Dependencies: 9
+# Priority: medium
+# Description: Implement the ability to record and playback macros including key presses and mouse movements.
+# Details:
+Create a macro system that allows users to record sequences of inputs and replay them with adjustable speeds.
+
+# Test Strategy:
+Record a macro and verify that it plays back accurately with the correct timing.

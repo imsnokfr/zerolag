@@ -520,8 +520,78 @@
         "dependencies": [
           4
         ],
-        "status": "pending",
-        "subtasks": []
+        "status": "done",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Create Profile Data Structure",
+            "description": "Design and implement the core profile data structure to store all user settings and configurations",
+            "details": "Create a comprehensive Profile class that can store:\n- DPI settings and mouse sensitivity\n- Polling rate configurations\n- Keyboard optimization settings\n- Cursor smoothing preferences\n- Macro library associations\n- Performance monitoring settings\n- GUI preferences and themes\n- Hotkey configurations\n- Gaming mode presets",
+            "status": "done",
+            "dependencies": [],
+            "parentTaskId": 12
+          },
+          {
+            "id": 2,
+            "title": "Implement Profile Manager",
+            "description": "Create the ProfileManager class to handle profile operations like save, load, delete, and switch",
+            "details": "Implement comprehensive profile management including:\n- Profile creation and deletion\n- Save/load profile data to/from JSON files\n- Profile switching with real-time settings application\n- Profile validation and error handling\n- Profile metadata management (creation date, last modified, etc.)\n- Profile backup and restore functionality",
+            "status": "done",
+            "dependencies": [
+              "12.1"
+            ],
+            "parentTaskId": 12
+          },
+          {
+            "id": 3,
+            "title": "Create Gaming Mode Presets",
+            "description": "Implement predefined gaming mode presets optimized for different game genres",
+            "details": "Create gaming mode presets including:\n- FPS Mode: High DPI, low smoothing, fast polling\n- MOBA Mode: Medium DPI, balanced settings, macro support\n- RTS Mode: Lower DPI, precision focus, hotkey optimization\n- MMO Mode: Customizable DPI, extensive macro support\n- Custom Mode: User-defined settings\n- Quick switching between modes",
+            "status": "done",
+            "dependencies": [
+              "12.1"
+            ],
+            "parentTaskId": 12
+          },
+          {
+            "id": 4,
+            "title": "Integrate with GUI",
+            "description": "Add profile management controls to the main GUI window",
+            "details": "Integrate profile management into the GUI including:\n- Profile selection dropdown in main window\n- Profile creation/edit dialog\n- Gaming mode preset buttons\n- Profile import/export buttons\n- Real-time profile switching\n- Profile status indicators\n- Settings preview before applying",
+            "status": "done",
+            "dependencies": [
+              "12.2",
+              "12.3"
+            ],
+            "parentTaskId": 12
+          },
+          {
+            "id": 5,
+            "title": "Add Profile Import/Export",
+            "description": "Implement profile sharing functionality with import/export capabilities",
+            "details": "Add profile sharing features including:\n- Export profiles to JSON files\n- Import profiles from JSON files\n- Profile validation during import\n- Profile compatibility checking\n- Batch import/export operations\n- Profile sharing via file or URL\n- Profile backup and restore",
+            "status": "done",
+            "dependencies": [
+              "12.2"
+            ],
+            "parentTaskId": 12
+          },
+          {
+            "id": 6,
+            "title": "Create Profile Tests",
+            "description": "Develop comprehensive tests for the profile management system",
+            "details": "Create test suite covering:\n- Profile creation and validation\n- Save/load functionality\n- Profile switching and application\n- Gaming mode presets\n- Import/export operations\n- Error handling and edge cases\n- Performance testing with large profiles\n- Integration testing with GUI",
+            "status": "done",
+            "dependencies": [
+              "12.1",
+              "12.2",
+              "12.3",
+              "12.4",
+              "12.5"
+            ],
+            "parentTaskId": 12
+          }
+        ]
       },
       {
         "id": 13,
@@ -698,7 +768,7 @@
     ],
     "metadata": {
       "created": "2025-09-08T01:28:27.806Z",
-      "updated": "2025-09-09T22:14:27.340Z",
+      "updated": "2025-09-09T22:32:17.997Z",
       "description": "Tasks for master context"
     }
   }

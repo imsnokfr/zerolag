@@ -1,0 +1,11 @@
+# Task ID: 1
+# Title: Setup Project Repository
+# Status: done
+# Dependencies: None
+# Priority: high
+# Description: Create a GitHub repository for ZeroLag and initialize it with a README file and a .gitignore for Python projects.
+# Details:
+Use GitHub to create a new repository named 'ZeroLag'. Initialize it with a README.md and a .gitignore file that excludes common Python artifacts like __pycache__ and .pyc files.
+
+# Test Strategy:
+Verify repository creation and correct .gitignore functionality by checking for ignored files.

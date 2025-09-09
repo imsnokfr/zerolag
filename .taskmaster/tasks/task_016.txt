@@ -1,0 +1,11 @@
+# Task ID: 16
+# Title: Cross-Platform Compatibility Testing
+# Status: pending
+# Dependencies: 15
+# Priority: medium
+# Description: Test the application on Windows, macOS, and Linux to ensure consistent behavior across platforms.
+# Details:
+Set up virtual machines or use physical devices to test the application on different operating systems and ensure all features work as intended.
+
+# Test Strategy:
+Run a suite of tests on each platform to verify functionality and performance.
