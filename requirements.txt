@@ -1,30 +1,20 @@
-# ZeroLag Dependencies
-# Core dependencies for gaming input optimization
-
-# GUI Framework
+# ZeroLag Core Dependencies
 PyQt5>=5.15.0
-
-# Input handling
 pynput>=1.7.6
+psutil>=5.8.0
 
-# Platform-specific input handling
-pywin32>=306; sys_platform == "win32"
-pyobjc>=9.0; sys_platform == "darwin"
-python-evdev>=1.4.0; sys_platform == "linux"
+# Platform-specific dependencies
+pywin32>=227; sys_platform == "win32"
+pyobjc>=8.0; sys_platform == "darwin"
 
-# System utilities
-psutil>=5.9.0
+# Development dependencies (optional)
+pytest>=6.0.0
+pytest-qt>=4.0.0
+pytest-cov>=2.10.0
+black>=21.0.0
+flake8>=3.8.0
+mypy>=0.800
 
-# Mathematical operations and smoothing algorithms
-numpy>=1.24.0
-
-# Development and testing
-pytest>=7.0.0
-pytest-cov>=4.0.0
-
-# Packaging
-PyInstaller>=5.0.0
-
-# Optional: For advanced features
-# keyboard>=0.13.5  # Alternative input handling
-# mouse>=0.7.1      # Alternative mouse handling
+# Optional dependencies for enhanced functionality
+requests>=2.25.0
+cryptography>=3.4.0

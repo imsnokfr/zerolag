@@ -16,24 +16,17 @@ Main Components:
 
 from .performance_monitor import (
     PerformanceMonitor,
-    PerformanceSnapshot,
+    PerformanceMetrics,
     PerformanceAlert
 )
 
-from .performance_dashboard import PerformanceDashboard
-
-from .performance_integration import (
-    PerformanceIntegration,
-    ComponentMetrics
-)
+from .crash_reporter import CrashReporter
 
 __all__ = [
     'PerformanceMonitor',
-    'PerformanceSnapshot', 
+    'PerformanceMetrics', 
     'PerformanceAlert',
-    'PerformanceDashboard',
-    'PerformanceIntegration',
-    'ComponentMetrics'
+    'CrashReporter'
 ]
 
 __version__ = "1.0.0"
