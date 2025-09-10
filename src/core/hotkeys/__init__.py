@@ -68,6 +68,29 @@ from .profile_feedback import (
     setup_profile_feedback,
     show_profile_feedback
 )
+from .emergency_hotkeys import (
+    EmergencyHotkeyManager,
+    EmergencyConfig,
+    EmergencyEvent,
+    EmergencyStats,
+    EmergencyLevel,
+    EmergencyState
+)
+from .emergency_integration import (
+    EmergencyIntegration,
+    EmergencyIntegrationConfig
+)
+from .hotkey_config_gui import (
+    HotkeyConfigGUI,
+    HotkeyBindingWidget,
+    KeyCaptureDialog
+)
+from .hotkey_presets import (
+    HotkeyPresetManager,
+    HotkeyPreset,
+    GamingGenre,
+    PresetComplexity
+)
 
 __all__ = [
     # Core hotkey system
@@ -130,7 +153,30 @@ __all__ = [
     'DPIFeedbackConfig',
     'FeedbackDisplayMode',
     'FeedbackStyle',
-    'DPIFeedbackDisplay'
+    'DPIFeedbackDisplay',
+    
+    # Emergency hotkeys
+    'EmergencyHotkeyManager',
+    'EmergencyConfig',
+    'EmergencyEvent',
+    'EmergencyStats',
+    'EmergencyLevel',
+    'EmergencyState',
+    
+    # Emergency integration
+    'EmergencyIntegration',
+    'EmergencyIntegrationConfig',
+    
+    # GUI components
+    'HotkeyConfigGUI',
+    'HotkeyBindingWidget',
+    'KeyCaptureDialog',
+    
+    # Presets
+    'HotkeyPresetManager',
+    'HotkeyPreset',
+    'GamingGenre',
+    'PresetComplexity'
 ]
 
 __version__ = "1.0.0"

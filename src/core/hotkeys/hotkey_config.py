@@ -442,19 +442,33 @@ class HotkeyConfigManager:
             else:
                 return obj
         
-        # Convert profile types back to enums
+        # Convert profiles back to HotkeyProfile objects
         if 'profiles' in data:
-            for profile_data in data['profiles'].values():
+            converted_profiles = {}
+            for profile_name, profile_data in data['profiles'].items():
+                # Convert profile type
                 if 'profile_type' in profile_data:
                     profile_data['profile_type'] = convert_enum_back(profile_data['profile_type'], HotkeyProfileType)
                 
-                # Convert action types in bindings
+                # Convert bindings back to HotkeyBinding objects
                 if 'bindings' in profile_data:
-                    for binding_data in profile_data['bindings'].values():
+                    converted_bindings = {}
+                    for binding_id, binding_data in profile_data['bindings'].items():
+                        # Convert action type and modifiers
                         if 'action_type' in binding_data:
                             binding_data['action_type'] = convert_enum_back(binding_data['action_type'], HotkeyActionType)
                         if 'modifiers' in binding_data:
                             binding_data['modifiers'] = HotkeyModifier(binding_data['modifiers'])
+                        
+                        # Create HotkeyBinding object
+                        converted_bindings[int(binding_id)] = HotkeyBinding(**binding_data)
+                    
+                    profile_data['bindings'] = converted_bindings
+                
+                # Create HotkeyProfile object
+                converted_profiles[profile_name] = HotkeyProfile(**profile_data)
+            
+            data['profiles'] = converted_profiles
         
         return HotkeyConfig(**data)
     

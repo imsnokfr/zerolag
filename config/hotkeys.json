@@ -1,0 +1,68 @@
+{
+  "profiles": {
+    "Default": {
+      "name": "Default",
+      "profile_type": "default",
+      "description": "Default hotkey profile",
+      "created_at": 1757460859.2628462,
+      "modified_at": 1757460859.2632408,
+      "bindings": {
+        "1": {
+          "hotkey_id": 1,
+          "action_type": "toggle_zerolag",
+          "modifiers": 3,
+          "virtual_key": 90,
+          "key_name": "Z",
+          "description": "Toggle ZeroLag",
+          "enabled": true,
+          "created_at": 1757460859.2630887,
+          "modified_at": 1757460859.263089,
+          "user_data": null
+        },
+        "2": {
+          "hotkey_id": 2,
+          "action_type": "emergency_stop",
+          "modifiers": 3,
+          "virtual_key": 46,
+          "key_name": "Delete",
+          "description": "Emergency Stop",
+          "enabled": true,
+          "created_at": 1757460859.2632391,
+          "modified_at": 1757460859.2632394,
+          "user_data": null
+        },
+        "3": {
+          "hotkey_id": 3,
+          "action_type": "emergency_reset",
+          "modifiers": 3,
+          "virtual_key": 82,
+          "key_name": "R",
+          "description": "Emergency Reset",
+          "enabled": true,
+          "created_at": 1757460859.2632400,
+          "modified_at": 1757460859.2632400,
+          "user_data": null
+        },
+        "4": {
+          "hotkey_id": 4,
+          "action_type": "emergency_disable",
+          "modifiers": 3,
+          "virtual_key": 68,
+          "key_name": "D",
+          "description": "Emergency Disable All",
+          "enabled": true,
+          "created_at": 1757460859.2632405,
+          "modified_at": 1757460859.2632405,
+          "user_data": null
+        }
+      },
+      "enabled": true,
+      "user_data": null
+    }
+  },
+  "active_profile": "Default",
+  "global_settings": {},
+  "created_at": 1757460859.2624044,
+  "modified_at": 1757460859.263423,
+  "version": "1.0.0"
+}

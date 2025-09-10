@@ -394,18 +394,57 @@ class HotkeyActions:
     
     def _handle_emergency_stop(self, context: ActionContext) -> Dict[str, Any]:
         """Handle emergency stop action."""
-        logger.warning("EMERGENCY STOP triggered")
-        return {"action": "emergency_stop", "status": "success"}
+        logger.critical("EMERGENCY STOP triggered")
+        
+        # Try to get emergency manager from context
+        emergency_manager = getattr(context, 'emergency_manager', None)
+        if emergency_manager:
+            result = emergency_manager.handle_emergency_stop(context.event)
+            return {
+                "action": "emergency_stop", 
+                "status": "success" if result.success else "failed",
+                "message": result.message,
+                "data": result.data
+            }
+        else:
+            logger.warning("No emergency manager available - using fallback")
+            return {"action": "emergency_stop", "status": "fallback"}
     
     def _handle_emergency_reset(self, context: ActionContext) -> Dict[str, Any]:
         """Handle emergency reset action."""
-        logger.warning("EMERGENCY RESET triggered")
-        return {"action": "emergency_reset", "status": "success"}
+        logger.critical("EMERGENCY RESET triggered")
+        
+        # Try to get emergency manager from context
+        emergency_manager = getattr(context, 'emergency_manager', None)
+        if emergency_manager:
+            result = emergency_manager.handle_emergency_reset(context.event)
+            return {
+                "action": "emergency_reset", 
+                "status": "success" if result.success else "failed",
+                "message": result.message,
+                "data": result.data
+            }
+        else:
+            logger.warning("No emergency manager available - using fallback")
+            return {"action": "emergency_reset", "status": "fallback"}
     
     def _handle_emergency_disable_all(self, context: ActionContext) -> Dict[str, Any]:
         """Handle emergency disable all action."""
-        logger.warning("EMERGENCY DISABLE ALL triggered")
-        return {"action": "emergency_disable_all", "status": "success"}
+        logger.critical("EMERGENCY DISABLE ALL triggered")
+        
+        # Try to get emergency manager from context
+        emergency_manager = getattr(context, 'emergency_manager', None)
+        if emergency_manager:
+            result = emergency_manager.handle_emergency_disable_all(context.event)
+            return {
+                "action": "emergency_disable_all", 
+                "status": "success" if result.success else "failed",
+                "message": result.message,
+                "data": result.data
+            }
+        else:
+            logger.warning("No emergency manager available - using fallback")
+            return {"action": "emergency_disable_all", "status": "fallback"}
     
     def get_action_history(self, limit: Optional[int] = None) -> List[ActionContext]:
         """Get action execution history."""
