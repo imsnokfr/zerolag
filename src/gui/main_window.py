@@ -35,6 +35,8 @@ from src.core.community import (
     ProfileValidator, CompatibilityChecker, SortOrder
 )
 from src.core.profiles import Profile
+from src.core.benchmark import BenchmarkManager, BenchmarkConfig
+from src.gui.benchmark_widget import BenchmarkWidget
 from pathlib import Path
 
 
@@ -108,6 +110,10 @@ class ZeroLagMainWindow(QMainWindow):
         self.profile_library_manager = None
         self.profile_validator = ProfileValidator()
         self.compatibility_checker = CompatibilityChecker()
+        
+        # Initialize benchmark tool
+        self.benchmark_manager = None
+        self.benchmark_widget = None
         
         self.init_ui()
         self.init_input_handlers()
@@ -683,6 +689,9 @@ class ZeroLagMainWindow(QMainWindow):
         
         # Community Tab
         self.create_community_tab(tab_widget)
+        
+        # Benchmark Tab
+        self.create_benchmark_tab(tab_widget)
         
         parent.addWidget(monitoring_widget)
         
@@ -1620,6 +1629,12 @@ class ZeroLagMainWindow(QMainWindow):
             self.init_community_sharing()
         except Exception as e:
             self.log_message(f"Error initializing community sharing: {e}", "ERROR")
+        
+        # Initialize benchmark tool
+        try:
+            self.init_benchmark_tool()
+        except Exception as e:
+            self.log_message(f"Error initializing benchmark tool: {e}", "ERROR")
             
     def load_settings(self):
         """Load settings from QSettings."""
@@ -2656,3 +2671,50 @@ class ZeroLagMainWindow(QMainWindow):
         except Exception as e:
             self.log_message(f"Error uploading community profile: {e}", "ERROR")
             QMessageBox.critical(self, "Upload Error", f"Error uploading profile: {e}")
+    
+    # Benchmark Tool Methods
+    
+    def init_benchmark_tool(self):
+        """Initialize the benchmark tool."""
+        try:
+            # Create benchmark configuration
+            config = BenchmarkConfig(
+                test_duration=30.0,
+                target_size=50.0,
+                target_count=10,
+                key_sequence=['a', 's', 'd', 'w'],
+                reaction_stimulus_delay=2.0,
+                max_reaction_time=5.0,
+                difficulty_multiplier=1.0,
+                visual_feedback=True,
+                sound_feedback=False,
+                auto_save_results=True
+            )
+            
+            # Initialize benchmark manager
+            self.benchmark_manager = BenchmarkManager(config)
+            
+            # Create benchmark widget
+            self.benchmark_widget = BenchmarkWidget()
+            self.benchmark_widget.set_benchmark_manager(self.benchmark_manager)
+            
+            self.log_message("Benchmark tool initialized successfully")
+            
+        except Exception as e:
+            self.log_message(f"Error initializing benchmark tool: {e}", "ERROR")
+    
+    def create_benchmark_tab(self, parent):
+        """Create the benchmark tool tab."""
+        if self.benchmark_widget:
+            parent.addTab(self.benchmark_widget, "Benchmark")
+        else:
+            # Fallback if benchmark widget not initialized
+            benchmark_widget = QWidget()
+            benchmark_layout = QVBoxLayout(benchmark_widget)
+            
+            error_label = QLabel("Benchmark tool not available")
+            error_label.setStyleSheet("color: #ff6b6b; font-size: 16px; font-weight: bold;")
+            error_label.setAlignment(Qt.AlignCenter)
+            benchmark_layout.addWidget(error_label)
+            
+            parent.addTab(benchmark_widget, "Benchmark")
